@@ -27,13 +27,21 @@ A modern web application that uses deep learning to classify images into 10 diff
 
 ## Tech Stack
 
-- **Backend**: Python, Flask
-- **Frontend**: HTML, CSS, JavaScript
-- **Deep Learning**: TensorFlow, Keras
-- **Model**: CIFAR-10 CNN
-- **Styling**: Bootstrap 5, Custom CSS
+- **Backend**:
+  - Python 3.8+
+  - Flask (Web Framework)
+  - TensorFlow/Keras (Deep Learning)
+  - CIFAR-10 CNN Model
+
+- **Frontend**:
+  - HTML5
+  - CSS3 (Custom Glassmorphism Design)
+  - Vanilla JavaScript
+  - Bootstrap 5 (UI Components)
 
 ## Quick Start
+
+### Local Development
 
 1. Clone and setup:
 ```bash
@@ -51,12 +59,29 @@ python app.py
 
 3. Open `http://localhost:5000` in your browser
 
-## Usage
+### Vercel Deployment
 
-1. Upload an image
-2. View real-time preview
-3. Get top 3 predictions with confidence scores
-4. Toggle dark/light mode as needed
+1. Install Vercel CLI:
+```bash
+npm install -g vercel
+```
+
+2. Login to Vercel:
+```bash
+vercel login
+```
+
+3. Deploy to Vercel:
+```bash
+vercel
+```
+
+4. For production deployment:
+```bash
+vercel --prod
+```
+
+The app will be available at `https://your-app-name.vercel.app`
 
 ## Project Structure
 
@@ -66,8 +91,16 @@ cifar10-classifier/
 ├── templates/          # HTML templates
 ├── static/            # Static files
 ├── requirements.txt   # Dependencies
+├── vercel.json        # Vercel configuration
 └── README.md         # Documentation
 ```
+
+## Usage
+
+1. Upload an image
+2. View real-time preview
+3. Get top 3 predictions with confidence scores
+4. Toggle dark/light mode as needed
 
 ## License
 
