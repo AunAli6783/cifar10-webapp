@@ -1,13 +1,1 @@
-<<<<<<< HEAD
-flask
-gunicorn
-tensorflow==2.16.1
-numpy
-Pillow
-=======
-flask==2.0.1
-gunicorn==20.1.0
-tensorflow==2.16.1
-numpy==1.21.0
-Pillow==9.0.0
->>>>>>> 86e1b3fb434163df90cf6a18f99ccc209d720ba2
+
