@@ -69,11 +69,5 @@ cifar10-classifier/
 └── README.md         # Documentation
 ```
 
-## License
 
-MIT License
-
-## Contact
-
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
-Project Link: [https://github.com/yourusername/cifar10-classifier](https://github.com/yourusername/cifar10-classifier) 
+RAJA AUN ALI
