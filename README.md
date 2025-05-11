@@ -102,11 +102,5 @@ cifar10-classifier/
 3. Get top 3 predictions with confidence scores
 4. Toggle dark/light mode as needed
 
-## License
 
-MIT License
-
-## Contact
-
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
-Project Link: [https://github.com/yourusername/cifar10-classifier](https://github.com/yourusername/cifar10-classifier) 
+RAJA AUN ALI
