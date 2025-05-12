@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, jsonify
+from tensorflow import keras
 import numpy as np
 from PIL import Image
 import os
-import json
 
 app = Flask(__name__)
 
@@ -10,20 +10,23 @@ app = Flask(__name__)
 CLASS_NAMES = ['airplane', 'automobile', 'bird', 'cat', 'deer',
                'dog', 'frog', 'horse', 'ship', 'truck']
 
+# Load the trained model
+MODEL_PATH = 'compatible_model.h5'
+try:
+    model = keras.models.load_model(MODEL_PATH, compile=False)
+    print("Model loaded successfully!")
+except Exception as e:
+    print(f"Error loading model: {str(e)}")
+    model = None
+
 def prepare_image(img):
     # Ensure image is 32x32 and RGB
     img = img.resize((32, 32))
     if img.mode != 'RGB':
         img = img.convert('RGB')
     img_array = np.array(img).astype('float32') / 255.0
+    img_array = np.expand_dims(img_array, axis=0)
     return img_array
-
-def get_dummy_predictions(img_array):
-    # This is a placeholder function that returns random predictions
-    # In a real application, you would use your trained model here
-    predictions = np.random.random(len(CLASS_NAMES))
-    predictions = predictions / predictions.sum()  # Normalize to sum to 1
-    return predictions
 
 @app.route('/')
 def index():
@@ -31,6 +34,9 @@ def index():
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    if model is None:
+        return jsonify({'error': 'Model not loaded properly. Please check the server logs.'})
+        
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'})
     file = request.files['file']
@@ -39,9 +45,7 @@ def predict():
     try:
         img = Image.open(file.stream)
         img_array = prepare_image(img)
-        
-        # Get predictions (currently using dummy predictions)
-        preds = get_dummy_predictions(img_array)
+        preds = model.predict(img_array, verbose=0)[0]
         
         # Get top 3 predictions
         top_3_idx = np.argsort(preds)[-3:][::-1]  # Get indices of top 3 predictions
